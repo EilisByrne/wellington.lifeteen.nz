@@ -19,8 +19,12 @@
     <%= f.text_field :name %>
   </p>
 
+  <p>
+    <%= f.file_field :avatar %>
+  </p>
+
   <p>  <%= f.label :role %><br>
-  <%= f.collection_select(:role_id, Role.all, :id, :name) %>
+    <%= f.collection_select(:role_id, Role.all, :id, :name) %>
   </p>
 
   <p>

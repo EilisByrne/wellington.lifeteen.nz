@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416231647) do
+ActiveRecord::Schema.define(version: 20150417014506) do
 
   create_table "events", force: :cascade do |t|
     t.string   "link"
@@ -24,8 +24,12 @@ ActiveRecord::Schema.define(version: 20150416231647) do
     t.string   "name"
     t.integer  "role_id"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "people", ["role_id"], name: "index_people_on_role_id"
