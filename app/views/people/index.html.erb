@@ -6,7 +6,7 @@
 
   <% @people.each do |person| %>
     <tr>
-      <td><%= image_tag person.avatar.url(:medium) %></td>
+     <td><%= image_tag person_avatar_file_path(person, person.avatar_file, :style => :medium) %></td>
       <td><%= person.name %></td>
       <td><%= person.role.name %></td>
       <td><%= person.description %></td>

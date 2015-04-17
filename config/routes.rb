@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :people
+  resources :people do
+    resources :avatar_files
+  end
   resources :events
 
   get 'home' => 'static_pages#home'

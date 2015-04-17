@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417025422) do
+ActiveRecord::Schema.define(version: 20150417032038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avatar_files", force: :cascade do |t|
+    t.string   "style"
+    t.integer  "person_id"
+    t.binary   "file_contents"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "avatar_files", ["person_id"], name: "index_avatar_files_on_person_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "link"
@@ -44,4 +54,5 @@ ActiveRecord::Schema.define(version: 20150417025422) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "avatar_files", "people"
 end
