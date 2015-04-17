@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417025422) do
+ActiveRecord::Schema.define(version: 20150417042922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avatars", force: :cascade do |t|
+    t.integer "person_id"
+    t.string  "style"
+    t.binary  "file_contents"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "link"
@@ -25,10 +31,10 @@ ActiveRecord::Schema.define(version: 20150417025422) do
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
-    t.integer  "role_id"
     t.string   "description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "role_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -44,4 +50,5 @@ ActiveRecord::Schema.define(version: 20150417025422) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "people", "roles"
 end
