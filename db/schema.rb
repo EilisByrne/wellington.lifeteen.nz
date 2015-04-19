@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20150417032038) do
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
-    t.integer  "role_id"
     t.string   "description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -43,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150417032038) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "role_id"
   end
 
   add_index "people", ["role_id"], name: "index_people_on_role_id", using: :btree
@@ -55,4 +55,5 @@ ActiveRecord::Schema.define(version: 20150417032038) do
   end
 
   add_foreign_key "avatar_files", "people"
+  add_foreign_key "people", "roles"
 end

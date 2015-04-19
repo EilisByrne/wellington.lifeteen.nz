@@ -5,7 +5,7 @@ class Person < ActiveRecord::Base
   has_attached_file :avatar,
     storage: :database,
     database_table: 'avatar_files',
-    url: 'people/:person_id/avatar_files/:id/:attachment?style=:style',
+    url: 'people/:id/show_avatar/:style',
     styles: { medium: "300x300>" },
     default_url: "/images/:style/missing.png",
     cascade_deletion: true

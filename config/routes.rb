@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :people do
-    resources :avatar_files
+    member do
+      get 'show_avatar'
+    end
   end
   resources :events
 

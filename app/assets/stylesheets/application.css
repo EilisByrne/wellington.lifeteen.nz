@@ -20,18 +20,26 @@ nav ul {
   padding: 0;
 }
 
-
 nav ul li {
   display: inline-block;
   vertical-align: top;
 }
 
+nav img {
+  width: 100px;
+}
+
 .menu-item {
-  margin-top: 2.5%;
+  margin-top: 1%;
   margin-left: 2%;
 }
 
 .menu-item a {
   text-decoration: none;
+}
 
+.container {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }

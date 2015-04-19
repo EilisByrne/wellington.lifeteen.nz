@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def index
-    @people = Person.all
+    @people_by_role =  Person.joins(:role).select('people.*, roles.name as role_name').group_by(&:role_name)
   end
 
   def new
@@ -15,6 +15,12 @@ class PeopleController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show_avatar
+    @person = Person.find(params[:id])
+    style = params[:style]
+    send_data @person.avatar.file_contents(style), :type => @person.avatar_content_type
   end
 
   private

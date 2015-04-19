@@ -1,3 +1,12 @@
 // Place all the styles related to the people controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.person {
+  display: inline-block;
+  width: 33%;
+}
+
+.person img {
+  border-radius: 50%;
+}
