@@ -4,7 +4,8 @@ Rails.application.routes.draw do
       get 'show_avatar'
     end
   end
-  resources :events
+
+  resources :events, :only => [:index]
 
   get 'home' => 'static_pages#home'
   get 'about' => 'static_pages#about'

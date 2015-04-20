@@ -16,4 +16,7 @@ class Person < ActiveRecord::Base
     content_type: { content_type: ["image/jpeg", "image/png"] },
     size: { in: 0..30.kilobytes }
 
+  def self.people_by_role
+    Person.joins(:role).select('people.*, roles.name as role_name').group_by(&:role_name)
+  end
 end

@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   def index
-    @people_by_role =  Person.joins(:role).select('people.*, roles.name as role_name').group_by(&:role_name)
+    @people_by_role = Person.people_by_role
   end
 
   def new

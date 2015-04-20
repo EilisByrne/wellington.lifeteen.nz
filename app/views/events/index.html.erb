@@ -1,12 +1,13 @@
-<h1>Events</h1>
-
-  <%= link_to 'New event', new_event_path %>
-
-<table>
-  <% @events.each do |event| %>
-    <tr>
-      <td><%= link_to event.name, event.link %></td>
-      <!-- <td><%= link_to 'Show', events_path(event) %></td> -->
-    </tr>
+<h1><%= link_to @page.name, @page.link %></h1>
+<strong>Upcoming Events:</strong> <br />
+<hr />
+  <% @upcoming_events.each do |event| %>
+    <%= event.name %> - <%= event.start_time %> <br />
   <% end %>
-</table>
+<br />
+<br />
+<strong>Past Events:</strong> <br />
+<hr />
+<% @past_events.each do |event| %>
+  <%= event.name %> - <%= event.start_time %> <br />
+<% end %>

@@ -1,7 +1,6 @@
 <h1>People</h1>
 
 <div>
-
   <%= link_to 'New person', new_person_path %>
 
   <% @people_by_role.each do |role, people| %>
@@ -11,7 +10,6 @@
         <%= image_tag show_avatar_person_path(person, :style => :medium) %>
         <p>Name: <%= person.name %></p>
         <p>Description: <%= person.description %></p>
-        <!-- <td><%= link_to 'Show', person_path(person) %></td> -->
       </div>
     <% end %>
   <% end %>

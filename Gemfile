@@ -46,3 +46,5 @@ end
 
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem "paperclip_database", :git => "git://github.com/softace/paperclip_database.git"
+
+gem 'fb_graph'
