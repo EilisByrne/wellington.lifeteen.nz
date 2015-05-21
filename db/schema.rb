@@ -11,21 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520225457) do
+ActiveRecord::Schema.define(version: 20150521025511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "avatar_files", force: :cascade do |t|
     t.string   "style"
-    t.integer  "person_id"
     t.binary   "file_contents"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
   end
 
-  add_index "avatar_files", ["person_id"], name: "index_avatar_files_on_person_id", using: :btree
   add_index "avatar_files", ["user_id"], name: "index_avatar_files_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
@@ -34,20 +32,6 @@ ActiveRecord::Schema.define(version: 20150520225457) do
     t.datetime "updated_at", null: false
     t.string   "name"
   end
-
-  create_table "people", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.integer  "role_id"
-  end
-
-  add_index "people", ["role_id"], name: "index_people_on_role_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
