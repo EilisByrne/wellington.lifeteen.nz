@@ -1,11 +1,16 @@
-class Person < ActiveRecord::Base
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable,
+    :recoverable, :rememberable, :trackable, :validatable
+
   belongs_to :role
   has_one :avatar_file, dependent: :destroy
 
   has_attached_file :avatar,
     storage: :database,
     database_table: 'avatar_files',
-    url: 'people/:id/show_avatar/:style',
+    url: 'users/:id/show_avatar/:style',
     default_url: "/images/:style/missing.png",
     cascade_deletion: true
 
@@ -15,7 +20,7 @@ class Person < ActiveRecord::Base
     content_type: { content_type: ["image/jpeg", "image/png"] },
     size: { in: 0..30.kilobytes }
 
-  def self.people_by_role
-    Person.joins(:role).select('people.*, roles.name as role_name').group_by(&:role_name)
+  def self.users_by_role
+    User.joins(:role).select('users.*, roles.name as role_name').group_by(&:role_name)
   end
 end

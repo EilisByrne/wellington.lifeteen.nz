@@ -1,0 +1,19 @@
+<% @users_by_role.each do |role, users| %>
+  <h2><%= role %></h2>
+  <% users.each do |user| %>
+    <div class="user">
+      <%= image_tag show_avatar_user_path(user) %>
+      <p>Name: <%= user.name %></p>
+      <p>Description: <%= user.description %></p>
+      <p>
+        <%= link_to 'Edit', edit_user_path(user) if can_edit?(user) %>
+        <% if privileged_user? %>
+          |
+          <%= link_to 'Delete', user_path(user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+<% end %>

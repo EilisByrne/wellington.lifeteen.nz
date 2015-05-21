@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  resources :people do
+  devise_for :users
+
+  resources :users do
     member do
       get 'show_avatar'
     end
   end
 
+  resources :people, :only => [:index]
+
   resources :events, :only => [:index]
 
-  get 'home' => 'static_pages#home'
+  get 'home' => 'static_pages#home', as: :user_root
   get 'about' => 'static_pages#about'
 
   root 'static_pages#home'
